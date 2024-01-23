@@ -10,23 +10,22 @@
 </head>
 
 <body class="vh-100">
-    <!--メインコンテンツについては、vh(vidual height)を100%に指定、flexで中心に-->
-    <div class = "d-flex flex-column justify-content-center align-items-center vh-100 background-color:transparent;">
-        <h1 class="text-danger background-color: transparent;">ソフトウェア開発</h1>
-        <h1 class="text-danger">みくじ</h1>
-        <div style="height: 30%; margin: 2% auto;">
-            <img src = "image/main/syougatsu2_omijikuji2.png" style="height: 100%; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));">
+     <div class="container">
+        <!--メインコンテンツについては、vh(vidual height)を100%に指定、flexで中心に-->
+        <div class = "d-flex flex-column justify-content-center align-items-center vh-100 background-color:transparent;">
+            <h1 class="text-danger background-color: transparent;">ソフトウェア開発</h1>
+            <h1 class="text-danger">みくじ</h1>
+            <div style="height: 30%; margin: 2% auto;">
+                <img src = "image/main/syougatsu2_omijikuji2.png" style="height: 100%; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));">
+            </div>
+            <button class = "btn btn-danger" style="border-radius: 3em;">おみくじを引く</button>
+            <div class = "about" style="margin-top:2%; display: flex; justify-content: center;">
+                <a href="developers.html" class="text-danger" style="text-decoration:none; font-weight:bold;" >このおみくじについて</a>
+                <p style="font-size:1em;">｜</p>
+                <a href="about.html" class="text-danger" style="text-decoration:none; font-weight:bold;">開発者一覧</a>
+            </div>
+            <h8 style="margin-top:1em;">©ソフトウェア開発みくじ</h8>
         </div>
-        <button class = "btn btn-danger" style="border-radius: 3em;">おみくじを引く</button>
-        <div class = "about" style="margin-top:2%; display: flex; justify-content: center;">
-            <a href="developers.html" class="text-danger" style="text-decoration:none; font-weight:bold;" >このおみくじについて</a>
-            <p style="font-size:1em;">｜</p>
-            <a href="about.html" class="text-danger" style="text-decoration:none; font-weight:bold;">開発者一覧</a>
-        </div>
-        <h8 style="margin-top:1em;">©ソフトウェア開発みくじ</h8>
-    </div>
-
-    <div class="container">
         <!-- おみくじページ -->
         <div class="omikuji-page text-danger" style="width: 300px;">
             <div class="omikuji-innerline">
