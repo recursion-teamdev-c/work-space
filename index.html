@@ -7,62 +7,66 @@
     <title>おみくじプロジェクト</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-</head>
-
-<body class="vh-100">
-     <div class="container">
-        <!--メインコンテンツについては、vh(vidual height)を100%に指定、flexで中心に-->
-        <div class = "d-flex flex-column justify-content-center align-items-center vh-100 background-color:transparent;">
-            <h1 class="text-danger background-color: transparent;">ソフトウェア開発</h1>
-            <h1 class="text-danger">みくじ</h1>
-            <div style="height: 30%; margin: 2% auto;">
-                <img src = "image/main/syougatsu2_omijikuji2.png" style="height: 100%; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));">
-            </div>
-            <button class = "btn btn-danger" style="border-radius: 3em;">おみくじを引く</button>
-            <div class = "about" style="margin-top:2%; display: flex; justify-content: center;">
-                <a href="about.html" class="text-danger" style="text-decoration:none; font-weight:bold;" >このおみくじについて</a>
-                <p style="font-size:1em;">｜</p>
-                <a href="developers.html" class="text-danger" style="text-decoration:none; font-weight:bold;">開発者一覧</a>
-            </div>
-            <h8 style="margin-top:1em;">©ソフトウェア開発みくじ</h8>
-        </div>
-        <!-- おみくじページ -->
-        <div class="omikuji-page text-danger" style="width: 300px;">
-            <div class="omikuji-innerline">
-                <h1 class="omikuji-title">ソフトウェア開発みくじ</h1>
-                <hr>
-                <div class="fortune">
-                    <img src="./image/daikichi.png" alt="">
-                    <h2 class="fortune-text">大吉</h2>
-                </div>
-                <hr>
-                <div class="description">
-                    <h3 class="description-text">GitHub Sponsors を通じて太っ腹なスポンサーがつきます。これであなたの OSS 開発は安泰です!!</h3>
-                </div>
-                <hr>
-                <div class="lucky-language">
-                    <p>❁ラッキー言語❁</p>
-                    <h3>Java</h3>
-                </div>
-                <hr>
-                <div class="lucky-database">
-                    <p>❁ラッキーデータベース❁</p>
-                    <h3>PostgreSQL</h3>
-                </div>
-                <hr>
-                <div class="lucky-editer">
-                    <p>❁ラッキーエディタ❁</p>
-                    <h3>Visual Studio Code</h3>
-                </div>
-                <hr>
-                <button type="button" class="btn btn-danger rounded-pill">もう一度おみくじを引く</button>
-            </div>
-        </div>
-    </div>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+</head>
+
+
+<body class="vh-100">
+    <!--idはtop-page-->
+    <div id = "top-page" class="container">
+       <div class = "d-flex flex-column justify-content-center align-items-center vh-100 background-color:transparent;">
+           <h1 class="text-danger background-color: transparent;">ソフトウェア開発</h1>
+           <h1 class="text-danger">みくじ</h1>
+           <div style="height: 30%; margin: 2% auto;">
+               <img src = "image/main/syougatsu2_omijikuji2.png" style="height: 100%; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));">
+           </div>
+           <!--idはdraw-omikuji-->
+           <button id="draw-omikuji" type="button" onclick="drawOmikuji(); event.preventDefault()" class="btn btn-danger rounded-pill yuji-syuku">
+            おみくじを引く</button>
+           <div class = "about" style="margin-top:2%; display: flex; justify-content: center;">
+               <a href="about.html" class="text-danger" style="text-decoration:none; font-weight:bold;" >このおみくじについて</a>
+               <p style="font-size:1em;">｜</p>
+               <a href="developers.html" class="text-danger" style="text-decoration:none; font-weight:bold;">開発者一覧</a>
+           </div>
+           <h8 style="margin-top:1em;">©ソフトウェア開発みくじ</h8>
+       </div>
+    </div>
+    
+    <!--おみくじページ。d-noneで最初は隠しておく-->
+    <div></div>
+    <div  id="omikuji-page" class="vh-100 d-flex justify-content-center align-items-center flex-column d-none omikuji-page text-danger" style="width: 300px;">
+        <div class="omikuji-innerline">
+            <h1 class="omikuji-title">ソフトウェア開発みくじ</h1>
+            <hr>
+            <div class="fortune">
+                <img id="fileNameOfImage" src="" alt="">
+                <h2 id="fortune" class="fortune-text"></h2>
+            </div>
+            <hr>
+            <div class="description">
+                <h3 id="description" class="description-text"></h3>
+            </div>
+            <hr>
+            <div class="lucky-language">
+                <p>❁ラッキー言語❁</p>
+                <h3 id="luckyLang"></h3>
+            </div>
+            <hr>
+            <div class="lucky-database">
+                <p>❁ラッキーデータベース❁</p>
+                <h3 id="luckyDB"></h3>
+            </div>
+            <hr>
+            <div class="lucky-editer">
+                <p>❁ラッキーエディタ❁</p>
+                <h3 id="luckyEditor"></h3>
+            </div>
+            <hr>
+            <button type="button" onclick="backToTopPage(); event.preventDefault()" class="btn btn-danger rounded-pill">もう一度おみくじを引く</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
