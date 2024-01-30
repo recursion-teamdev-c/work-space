@@ -9,6 +9,7 @@ class Omikuji {
         this.fortune = this.getFortune(getRandomNumber(5)); // string
         this.description = this.getDescription(this.fortune); // string
         this.fileNameOfImage = this.getFileNameOfImage(this.fortune); // string
+        this.audio = this.getAudioOfFortune(this.fortune); // Audio
         this.luckyLang = this.getLuckyLang(getRandomNumber(8)); // string
         this.luckyDB = this.getLuckyDB(getRandomNumber(5)); // string
         this.luckyEditor = this.getLuckyEditor(getRandomNumber(5)); // string
@@ -71,6 +72,30 @@ class Omikuji {
         }
 
         return 'image/omikuji/' + fileNameOfImage;
+    }
+
+    getAudioOfFortune(fortune) {
+        //audioのファイルパスを代入
+        let fileNameOfAudio = '';
+        switch (fortune) {
+            case '大吉':
+                fileNameOfAudio = 'daikichi.mp3';
+                break;
+            case '中吉':
+                fileNameOfAudio = 'chukichi.mp3';
+                break;
+            case '小吉':
+                fileNameOfAudio = 'shokichi.mp3';
+                break;
+            case '末吉':
+                fileNameOfAudio = 'suekichi.mp3';
+                break;
+            case '凶':
+                fileNameOfAudio = 'kyou.mp3';
+                break;
+            }
+    
+            return new Audio('./audio/' + fileNameOfAudio);
     }
 
     getLuckyLang(number) {
@@ -177,6 +202,7 @@ function drawOmikuji() {
     displayNone(config.topPage);
     displayBlock(config.omikujiPage);
     fortune.innerHTML = omikuji.fortune;
+    omikuji.audio.play()
     description.innerHTML = omikuji.description;
     luckyLang.innerHTML = omikuji.luckyLang;
     luckyDB.innerHTML = omikuji.luckyDB;
