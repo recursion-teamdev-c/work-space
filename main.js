@@ -208,6 +208,7 @@ function drawOmikuji() {
     luckyDB.innerHTML = omikuji.luckyDB;
     luckyEditor.innerHTML = omikuji.luckyEditor;
     fileNameOfImage.src = omikuji.fileNameOfImage;
+    document.getElementById("xpost").setAttribute("data-text", `おみくじ結果は${omikuji.fortune}でした。${omikuji.description}`);
 }
  
 //drawOmikujiと逆の操作
