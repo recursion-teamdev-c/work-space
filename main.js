@@ -179,6 +179,13 @@ class Omikuji {
     }
 }
 
+//トップページとおみくじページのidを連想配列で保持
+const config = {
+    topPage: document.getElementById('top-page'),
+    omikujiPage: document.getElementById('omikuji-page'),
+    xpost : document.getElementById('xpost')
+};
+
 //noneとblockを切り替える
 function displayNone(ele) {
     ele.classList.remove('d-block');
@@ -190,11 +197,18 @@ function displayBlock(ele) {
     ele.classList.add('d-block');
 }
 
-//トップページとおみくじページのidを連想配列で保持
-const config = {
-    topPage: document.getElementById('top-page'),
-    omikujiPage: document.getElementById('omikuji-page'),
-};
+function addingWidgets(){
+    let xScript = document.createElement("script");
+    xScript.id = 'target-script';
+    xScript.async = true;
+    xScript.src = "https://platform.twitter.com/widgets.js";
+    document.body.appendChild(xScript);
+}
+
+function deleteWidgets(){
+    const delScript = document.getElementById('target-script');
+    if (delScript) document.body.removeChild(delScript);
+}
 
 //topPageをnone, omikujiPageをblockに切り替える。omikujiPageには作成したドキュメントを付け加える
 function drawOmikuji() {
@@ -202,18 +216,21 @@ function drawOmikuji() {
     displayNone(config.topPage);
     displayBlock(config.omikujiPage);
     fortune.innerHTML = omikuji.fortune;
-    omikuji.audio.play()
+    omikuji.audio.play();
     description.innerHTML = omikuji.description;
     luckyLang.innerHTML = omikuji.luckyLang;
     luckyDB.innerHTML = omikuji.luckyDB;
     luckyEditor.innerHTML = omikuji.luckyEditor;
     fileNameOfImage.src = omikuji.fileNameOfImage;
+    config.xpost.setAttribute("data-text", `おみくじ結果は${omikuji.fortune}でした。${omikuji.description}`);
+    addingWidgets();
 }
  
 //drawOmikujiと逆の操作
 function backToTopPage() {
     displayNone(config.omikujiPage);
     displayBlock(config.topPage);
+    deleteWidgets();
 }
 
 

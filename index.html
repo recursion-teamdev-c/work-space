@@ -23,7 +23,7 @@
                <img src = "image/main/syougatsu2_omijikuji2.png" style="height: 100%; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));">
            </div>
            <!--idはdraw-omikuji-->
-           <button id="draw-omikuji" type="button" onclick="drawOmikuji(); event.preventDefault()" class="btn btn-danger rounded-pill yuji-syuku">
+           <button id="draw-omikuji" type="button" onclick="drawOmikuji();" class="btn btn-danger rounded-pill yuji-syuku">
             おみくじを引く</button>
            <div class = "about" style="margin-top:2%; display: flex; justify-content: center;">
                <a href="about.html" class="text-danger" style="text-decoration:none; font-weight:bold;" >このおみくじについて</a>
@@ -35,7 +35,7 @@
     </div>
     
     <!--おみくじページ。d-noneで最初は隠しておく-->
-    <div  id="omikuji-page" class="vh-100 d-flex justify-content-center align-items-center flex-column d-none omikuji-page text-danger" style="width: 300px;">
+    <div id="omikuji-page" class="vh-100 d-flex justify-content-center align-items-center flex-column d-none omikuji-page text-danger" style="width: 300px;">
         <div class="omikuji-innerline overflow-scroll">
             <h1 class="omikuji-title">ソフトウェア開発みくじ</h1>
             <hr>
@@ -64,6 +64,7 @@
             </div>
             <hr>
             <button type="button" onclick="backToTopPage(); event.preventDefault()" class="btn btn-danger rounded-pill">もう一度おみくじを引く</button>
+            <a id="xpost" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="" data-lang="ja" data-show-count="false">Tweet</a>
         </div>
     </div>
     <script type="text/javascript" src="main.js"></script>
