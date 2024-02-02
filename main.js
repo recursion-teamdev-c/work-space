@@ -179,6 +179,13 @@ class Omikuji {
     }
 }
 
+//トップページとおみくじページのidを連想配列で保持
+const config = {
+    topPage: document.getElementById('top-page'),
+    omikujiPage: document.getElementById('omikuji-page'),
+    xpost : document.getElementById('xpost')
+};
+
 //noneとblockを切り替える
 function displayNone(ele) {
     ele.classList.remove('d-block');
@@ -190,24 +197,19 @@ function displayBlock(ele) {
     ele.classList.add('d-block');
 }
 
-//トップページとおみくじページのidを連想配列で保持
-const config = {
-    topPage: document.getElementById('top-page'),
-    omikujiPage: document.getElementById('omikuji-page'),
-};
-
 //topPageをnone, omikujiPageをblockに切り替える。omikujiPageには作成したドキュメントを付け加える
 function drawOmikuji() {
     let omikuji = new Omikuji();
     displayNone(config.topPage);
     displayBlock(config.omikujiPage);
     fortune.innerHTML = omikuji.fortune;
-    omikuji.audio.play()
+    omikuji.audio.play();
     description.innerHTML = omikuji.description;
     luckyLang.innerHTML = omikuji.luckyLang;
     luckyDB.innerHTML = omikuji.luckyDB;
     luckyEditor.innerHTML = omikuji.luckyEditor;
     fileNameOfImage.src = omikuji.fileNameOfImage;
+    config.xpost.href = `https://twitter.com/share?ref_src=twsrc%5Etfw&text=おみくじ結果は${omikuji.fortune}でした！${omikuji.description}`;
 }
  
 //drawOmikujiと逆の操作
