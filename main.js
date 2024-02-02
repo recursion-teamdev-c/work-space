@@ -197,19 +197,6 @@ function displayBlock(ele) {
     ele.classList.add('d-block');
 }
 
-function addingWidgets(){
-    let xScript = document.createElement("script");
-    xScript.id = 'target-script';
-    xScript.async = true;
-    xScript.src = "https://platform.twitter.com/widgets.js";
-    document.body.appendChild(xScript);
-}
-
-function deleteWidgets(){
-    const delScript = document.getElementById('target-script');
-    if (delScript) document.body.removeChild(delScript);
-}
-
 //topPageをnone, omikujiPageをblockに切り替える。omikujiPageには作成したドキュメントを付け加える
 function drawOmikuji() {
     let omikuji = new Omikuji();
@@ -222,15 +209,13 @@ function drawOmikuji() {
     luckyDB.innerHTML = omikuji.luckyDB;
     luckyEditor.innerHTML = omikuji.luckyEditor;
     fileNameOfImage.src = omikuji.fileNameOfImage;
-    config.xpost.setAttribute("data-text", `おみくじ結果は${omikuji.fortune}でした。${omikuji.description}`);
-    addingWidgets();
+    config.xpost.href = `https://twitter.com/share?ref_src=twsrc%5Etfw&text=おみくじ結果は${omikuji.fortune}でした！${omikuji.description}`;
 }
  
 //drawOmikujiと逆の操作
 function backToTopPage() {
     displayNone(config.omikujiPage);
     displayBlock(config.topPage);
-    deleteWidgets();
 }
 
 
